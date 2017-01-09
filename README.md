@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/PyroclasticMayhem/perhionbot/blob/master/perhion.png?raw=true"/ height="200px" width="200px">
+  <img src="https://github.com/perhion/perhionbot/blob/master/perhion.png?raw=true"/ height="200px" width="200px">
 </p>
 # Perhion Bot
 A Discord Bot Powered by Eris.<br>
