@@ -1,0 +1,30 @@
+{
+  "name": "perhionbot",
+  "version": "0.0.4",
+  "description": "A Discord Bot Powered by Eris",
+  "author": "PyroclasticMayhem",
+  "license": "MIT",
+  "main": "start.js",
+  "homepage": "https://perhion.com/discordbot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PyroclasticMayhem/perhionbot/"
+  },
+  "bugs": {
+    "url": "https://github.com/PyroclasticMayhem/perhionbot/issues"
+  },
+  "scripts": {
+    "start": "node start.js"
+  },
+  "keywords": [
+    "discord",
+    "eris",
+    "node",
+    "bot"
+  ],
+  "dependencies": {
+    "eris": "abalabahaha/eris#dev",
+    "axios": "*",
+    "moment": "*"
+  }
+}

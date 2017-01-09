@@ -1,0 +1,18 @@
+{
+    "_header1": "########Bot Information############",
+    "prefix": "!",
+    "bot_owner": "",
+    "homepage": "",
+    "description": "",
+    "_header2": "########Bot Status############",
+    "game_name": "",
+    "streaming_status": false,
+    "stream_url": "",
+    "_header3": "########Tracking Keys############",
+    "discord_pw_post": false,
+    "discord_pw_key": "",
+    "carbonitex_post": false,
+    "carbonitex_key": "",
+    "_header3": "########Discord Token############",
+    "token": ""
+}
