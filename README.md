@@ -37,7 +37,7 @@ https://discordapp.com/oauth2/authorize?client_id=168080204063834112&scope=bot&p
 `discord_pw_post` If using discord.pw<br>
 `discord_pw_key` The key for discord.pw<br>
 `carbonitex_post` If using Carbonitex<br>
-`carbonitex_key` The key for Carbonitex<br><br>
+`carbonitex_key` The key for Carbonitex<br>
 `token` The token for the bot<br>
 3: Install the latest version of Node<br>
 4: Run `node bot.js`<br>
