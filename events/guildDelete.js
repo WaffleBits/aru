@@ -2,7 +2,7 @@
  * Perhion Bot
  * Guild Delete Script
  * Created: 2/3/17
- * Last Updated: 2/3/17
+ * Last Updated: 2/4/17
  * Description: Guild Delete Event
  */
  
@@ -11,6 +11,6 @@ const logger = require("../utils/logger.js"),
       statusManager = require("../utils/statusManager.js");
 
 module.exports = function (bot, guild) {
-    statusManager.ostStats(bot);
+    statusManager.postStats(bot);
     logger.guildLeave(bot, guild);
 };

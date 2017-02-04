@@ -2,7 +2,7 @@
  * Perhion Bot
  * Guild Create Script
  * Created: 2/3/17
- * Last Updated: 2/3/17
+ * Last Updated: 2//17
  * Description: Guild Create Event
  */
  
@@ -12,5 +12,5 @@ const logger = require("../utils/logger.js"),
 
 module.exports = function (bot, guild) {
     statusManager.postStats(bot);
-    logger.uildJoin(bot, guild);
+    logger.guildJoin(bot, guild);
 };
