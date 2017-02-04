@@ -40,7 +40,7 @@ https://discordapp.com/oauth2/authorize?client_id=168080204063834112&scope=bot&p
 `carbonitex_key` The key for Carbonitex<br>
 `token` The token for the bot<br>
 3: Install the latest version of Node<br>
-4: Run `node bot.js`<br>
+4: Run `npm install && node bot.js`<br>
 5: Profit
 ## Adding a Command
 1: Create a new file in the commands folder ending in .js<br>

@@ -41,7 +41,9 @@ module.exports = function (bot) {
                          `**IMDb Commands:**\n` +
                          `**${prefix}movie moviename** - Get information about a movie via IMDb\n\n` +
                          `**Game Info Commands:**\n` +
-                         `**${prefix}ow username platform region** - Get information from a Overwatch profile. Replace username with Battletag, platform with pc, xbl, or psn, and region with eu, kr, us, global, cn\n\n`,
+                         `**${prefix}ow username platform region** - Get information from a Overwatch profile. Replace username with Battletag, platform with pc, xbl, or psn, and region with eu, kr, us, global, cn\n\n` +
+                         `**Misc. Commands:**\n` +
+                         `**${prefix}c** - Chat with the bot (uses Program-O)\n\n`,
             timestamp: new Date(),
             footer: {
                 icon_url: bot.user.avatarURL,

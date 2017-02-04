@@ -1,6 +1,6 @@
 {
   "name": "aru",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Discord Bot Powered by Eris",
   "author": "PyroclasticMayhem",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "url": "https://github.com/perhion/aru/issues"
   },
   "scripts": {
-    "start": "npm install && node bot.js"
+    "start": "node bot.js"
   },
   "keywords": [
     "discord",

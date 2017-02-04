@@ -2,7 +2,7 @@
  * Perhion Bot
  * Logger Script
  * Created: 1/6/17
- * Last Updated: 2//17
+ * Last Updated: 2/4/17
  * Description: Print out messages to console when called for
  */
 
