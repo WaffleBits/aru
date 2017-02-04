@@ -2,17 +2,21 @@
  * Perhion Bot
  * Profiler Bot Script
  * Created: 1/6/17
- * Last Updated: 1/6/17
- * Author: PyroclasticMayhem#4093
+ * Last Updated: 2/3/17
  * Description: Grabs user info and server info
  */
+ 
+//Set up modules and files
+const config = require("../config.json"),
+      logger = require("../utils/logger.js"),
+      moment = require("moment");
+      
+//Define Variables for Bot Info
+var timeFormat = config.time_format;
 
-//Load Console Debug File
-var Console = require("../utils/console.js");
-
-module.exports = function (Bot, MOMENT) {
-    //Profile Command
-    Bot.registerCommand("profile", (msg) => {
+module.exports = function (bot) {
+    //Profile command
+    bot.registerCommand("profile", (msg) => {
         //Assign a User
         var User;
         if (0 == msg.mentions.length) {
@@ -44,7 +48,7 @@ module.exports = function (Bot, MOMENT) {
         		}, 
         		{
         			name: "Join Date",
-        			value: MOMENT(User.joinedAt).utc().format("ddd MMM DD YYYY | kk:mm:ss") + " " + (MOMENT(User.joinedAt).fromNow()),
+        			value: moment(User.joinedAt).utc().format(timeFormat) + " " + (moment(User.joinedAt).fromNow()),
         			inline: true
         		}, 
         		{
@@ -59,27 +63,27 @@ module.exports = function (Bot, MOMENT) {
         		}, 
         		{
         			name: "Creation Date",
-        			value: MOMENT(User.user.createdAt).utc().format("ddd MMM DD YYYY | kk:mm:ss") + " " + MOMENT(User.user.createdAt).fromNow(),
+        			value: moment(User.user.createdAt).utc().format(timeFormat) + " " + moment(User.user.createdAt).fromNow(),
         			inline: true
         		}
         	],
         	timestamp: new Date(),
             footer: {
-                icon_url: Bot.user.avatarURL,
-                text: Bot.user.username
+                icon_url: bot.user.avatarURL,
+                text: bot.user.username
             }
         };
     
         //Create the Message
-        Bot.createMessage(msg.channel.id, {embed: embed});
+        bot.createMessage(msg.channel.id, {embed: embed});
         
         //Print the info that the command was used to the console
-        var Command = "Profile (on " + User.user.username + "#" + User.user.discriminator + ")";
-        Console.CommandUsed(Bot, msg, Command);
+        var command = "Profile (on " + User.user.username + "#" + User.user.discriminator + ")";
+        logger.commandUsed(bot, msg, command);
     });
     
-    //Server Information Command
-    Bot.registerCommand("serverinfo", (msg) => {
+    //Server Information command
+    bot.registerCommand("serverinfo", (msg) => {
         if(msg.channel == msg.channel.PrivateChannel) return;
         var Server = msg.guild;
         let embed = {
@@ -108,7 +112,7 @@ module.exports = function (Bot, MOMENT) {
     			}, 
     			{
     				name: "Creation Date",
-    				value: MOMENT(Server.createdAt).utc().format("ddd MMM DD YYYY | kk:mm:ss") + " " + MOMENT(Server.createdAt).fromNow(),
+    				value: moment(Server.createdAt).utc().format(timeFormat) + " " + moment(Server.createdAt).fromNow(),
     				inline: true
     			}, 
     			{
@@ -127,16 +131,16 @@ module.exports = function (Bot, MOMENT) {
             },
     		timestamp: new Date(),
             footer: {
-                icon_url: Bot.user.avatarURL,
-                text: Bot.user.username
+                icon_url: bot.user.avatarURL,
+                text: bot.user.username
             }
         };
     
         //Create the Message
-        Bot.createMessage(msg.channel.id, {embed: embed});
+        bot.createMessage(msg.channel.id, {embed: embed});
         
         //Print the info that the command was used to the console
-        var Command = "Server (in " + msg.guild.name + ")";
-        Console.CommandUsed(Bot, msg, Command);
+        var command = "Server (in " + msg.guild.name + ")";
+        logger.commandUsed(bot, msg, command);
     });
 };

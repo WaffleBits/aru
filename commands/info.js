@@ -2,90 +2,95 @@
  * Perhion Bot
  * Info Bot Script
  * Created: 1/6/17
- * Last Updated: 1/6/17
- * Author: PyroclasticMayhem#4093
+ * Last Updated: 2/3/17
  * Description: Stores bot information commands such as the help, ping, and about command
  */
 
-//Load Console Debug File
-var Console = require("../utils/console.js");
+//Set up modules and files
+const config = require("../config.json"),
+      logger = require("../utils/logger.js");
 
-module.exports = function (Bot, BotHomepage, PREFIX, BotDescription) {
+//Define Variables for Bot Info
+var botDescription = config.description,
+    botHomepage = config.homepage,
+    prefix = config.prefix;
+
+module.exports = function (bot) {
     //Help Command
-    Bot.registerCommand("help", (msg) => {
+    bot.registerCommand("help", (msg) => {
         //The Embed for the Message
         let embed = {
             color: 16765404,
             author: {
-                name: Bot.user.username,
-                icon_url: Bot.user.avatarURL,
-                url: BotHomepage
+                name: bot.user.username,
+                icon_url: bot.user.avatarURL,
+                url: botHomepage
             },
             title: "Commands:",
             description: 
                          `**Info Commands:**\n` +
-                         `**${PREFIX}help** - This help menu\n` +
-                         `**${PREFIX}ping** - Get bot stats\n` + 
-                         `**${PREFIX}about** - Get information about the bot\n\n` +
+                         `**${prefix}help** - This help menu\n` +
+                         `**${prefix}ping** - Get bot stats\n` + 
+                         `**${prefix}about** - Get information about the bot\n\n` +
                          `**Profiler Commands:**\n` +
-                         `**${PREFIX}profile @UserName** - Get user details\n` +
-                         `**${PREFIX}serverinfo** - Get info about the server\n\n` +
+                         `**${prefix}profile @UserName** - Get user details\n` +
+                         `**${prefix}serverinfo** - Get info about the server\n\n` +
                          `**Anime Commands:**\n` +
-                         `**${PREFIX}anime animename** - Get information about an anime via kitsu.io\n` +
-                         `**${PREFIX}manga manganame** - Get information about a manga via kitsu.io\n\n` +
+                         `**${prefix}anime animename** - Get information about an anime via kitsu.io\n` +
+                         `**${prefix}manga manganame** - Get information about a manga via kitsu.io\n\n` +
                          `**IMDb Commands:**\n` +
-                         `**${PREFIX}movie moviename** - Get information about a movie via IMDb\n\n` +
+                         `**${prefix}movie moviename** - Get information about a movie via IMDb\n\n` +
                          `**Game Info Commands:**\n` +
-                         `**${PREFIX}ow username platform region** - Get information from a Overwatch profile. Replace username with Battletag, platform with pc, xbl, or psn, and region with eu, kr, us, global, cn\n\n`,
+                         `**${prefix}ow username platform region** - Get information from a Overwatch profile. Replace username with Battletag, platform with pc, xbl, or psn, and region with eu, kr, us, global, cn\n\n`,
             timestamp: new Date(),
             footer: {
-                icon_url: Bot.user.avatarURL,
-                text: Bot.user.username
+                icon_url: bot.user.avatarURL,
+                text: bot.user.username
             }
         };
     
         //Create the Message
-        Bot.createMessage(msg.channel.id, {embed: embed});
+        bot.createMessage(msg.channel.id, {embed: embed});
         
         //Print the info that the command was used to the console
-        var Command = "Help";
-        Console.CommandUsed(Bot, msg, Command);
+        var command = "Help";
+        logger.commandUsed(bot, msg, command);
     });
     
     //About Command
-    Bot.registerCommand('about', (msg) => {
+    bot.registerCommand('about', (msg) => {
         let embed = {
             color: 16765404,
             author: {
-                name: Bot.user.username,
-                icon_url: Bot.user.avatarURL,
-                url: BotHomepage
+                name: bot.user.username,
+                icon_url: bot.user.avatarURL,
+                url: botHomepage
             },
             title: "Description:",
-            description: BotDescription,
+            description: botDescription,
             thumbnail: {
-            url: Bot.user.avatarURL
+            url: bot.user.avatarURL
             },
             timestamp: new Date(),
             footer: {
-                icon_url: Bot.user.avatarURL,
-                text: Bot.user.username
+                icon_url: bot.user.avatarURL,
+                text: bot.user.username
             }
         };
-        Bot.createMessage(msg.channel.id, {embed: embed});
+        bot.createMessage(msg.channel.id, {embed: embed});
         
         //Print the info that the command was used to the console
-        var Command = "About";
-        Console.CommandUsed(Bot, msg, Command);
+        var command = "About";
+        logger.commandUsed(bot, msg, command);
     });
 
     //Ping Command
-    Bot.registerCommand("ping", (msg) => {
+    bot.registerCommand("ping", (msg) => {
         //Create the Message
-        Bot.createMessage(msg.channel.id, "Pong! " + Bot.user.username + " is currently on " + Bot.guilds.size + " servers and serving " + Bot.users.size + " users.");
+        bot.createMessage(msg.channel.id, "Pong! " + bot.user.username + " is currently on " + bot.guilds.size + " servers and serving " + bot.users.size + " users.");
         
         //Print the info that the command was used to the console
-        var Command = "Ping";
-        Console.CommandUsed(Bot, msg, Command);
+        var command = "Ping";
+        logger.commandUsed(bot, msg, command);
     });
 };

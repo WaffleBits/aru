@@ -2,21 +2,21 @@
  * Perhion Bot
  * Anime Bot Script
  * Created: 1/6/17
- * Last Updated: 1/7/17
- * Author: PyroclasticMayhem#4093
+ * Last Updated: 2/3/17
  * Description: Anime related commands
  */
 
-//Load Console Debug File
-var Console = require("../utils/console.js");
+//Set up modules and files
+const axios = require("axios"),
+      logger = require("../utils/logger.js");
 
-module.exports = function (Bot, AXIOS) {
+module.exports = function (bot) {
     //Anime Command
-    Bot.registerCommand("anime", (msg, args) => {
+    bot.registerCommand("anime", (msg, args) => {
         //Try the command
         try {
             //Get from Kitsu.io
-        	AXIOS.get("https://kitsu.io/api/edge/anime?filter[text]=" + args)
+        	axios.get("https://kitsu.io/api/edge/anime?filter[text]=" + args)
         	.then(function(response){
         	    //The Embed for the Message
         		let embed = {
@@ -69,17 +69,17 @@ module.exports = function (Bot, AXIOS) {
         			},
         			timestamp: new Date(),
         			footer: {
-        				icon_url: Bot.user.avatarURL,
-        				text: Bot.user.username
+        				icon_url: bot.user.avatarURL,
+        				text: bot.user.username
         			}
         		};
                 
                 //Create the Message
-                Bot.createMessage(msg.channel.id, {embed: embed});
+                bot.createMessage(msg.channel.id, {embed: embed});
                 
                 //Print the info that the command was used to the console
-                var Command = "Anime (to search for " + args + ")";
-                Console.CommandUsed(Bot, msg, Command);
+                var command = "Anime (to search for " + args + ")";
+                logger.commandUsed(bot, msg, command);
                 
                 //Uncomment and change to test path
                 //console.log(response.data.data[0].attributes.episodeCount);
@@ -90,11 +90,11 @@ module.exports = function (Bot, AXIOS) {
         }
     });
     //Manga Command
-    Bot.registerCommand("manga", (msg, args) => {
+    bot.registerCommand("manga", (msg, args) => {
         //Try the command
         try {
             //Get from Kitsu.io
-        	AXIOS.get("https://kitsu.io/api/edge/manga?filter[text]=" + args)
+        	axios.get("https://kitsu.io/api/edge/manga?filter[text]=" + args)
         	.then(function(response){
         	    //The Embed for the Message
         		let embed = {
@@ -147,17 +147,17 @@ module.exports = function (Bot, AXIOS) {
         			},
         			timestamp: new Date(),
         			footer: {
-        				icon_url: Bot.user.avatarURL,
-        				text: Bot.user.username
+        				icon_url: bot.user.avatarURL,
+        				text: bot.user.username
         			}
         		};
                 
                 //Create the Message
-                Bot.createMessage(msg.channel.id, {embed: embed});
+                bot.createMessage(msg.channel.id, {embed: embed});
                 
                 //Print the info that the command was used to the console
-                var Command = "Manga (to search for " + args + ")";
-                Console.CommandUsed(Bot, msg, Command);
+                var command = "Manga (to search for " + args + ")";
+                logger.commandUsed(bot, msg, command);
                 
                 //Uncomment and change to test path
                 //console.log(response.data.data[0].attributes.episodeCount);

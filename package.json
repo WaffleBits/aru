@@ -1,20 +1,20 @@
 {
-  "name": "perhionbot",
-  "version": "0.0.4",
+  "name": "aru",
+  "version": "0.0.5",
   "description": "A Discord Bot Powered by Eris",
   "author": "PyroclasticMayhem",
   "license": "MIT",
   "main": "start.js",
-  "homepage": "https://perhion.com/discordbot",
+  "homepage": "https://github.com/perhion/aru",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PyroclasticMayhem/perhionbot/"
+    "url": "https://github.com/perhion/aru"
   },
   "bugs": {
-    "url": "https://github.com/PyroclasticMayhem/perhionbot/issues"
+    "url": "https://github.com/perhion/aru/issues"
   },
   "scripts": {
-    "start": "node start.js"
+    "start": "npm install && node bot.js"
   },
   "keywords": [
     "discord",

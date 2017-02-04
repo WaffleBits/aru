@@ -2,17 +2,17 @@
  * Perhion Bot
  * Overwatch Bot Script
  * Created: 1/7/17
- * Last Updated: 1/7/17
- * Author: PyroclasticMayhem#4093
+ * Last Updated: 2/3/17
  * Description: Overwatch related commands
  */
 
-//Load Console Debug File
-var Console = require("../utils/console.js");
+//Set up modules and files
+const axios = require("axios"),
+      logger = require("../utils/logger.js");
 
-module.exports = function (Bot, AXIOS) {
+module.exports = function (bot) {
     //Movie Command
-    Bot.registerCommand("ow", (msg, args) => {
+    bot.registerCommand("ow", (msg, args) => {
         //Try the command
         try {
             //Assign args to a variable
@@ -21,7 +21,7 @@ module.exports = function (Bot, AXIOS) {
             var Region = args[2];
             
             //Get from Overwatch API
-        	AXIOS.get("https://api.lootbox.eu/" + Platform + "/" + Region + "/" + Username + "/profile")
+        	axios.get("https://api.lootbox.eu/" + Platform + "/" + Region + "/" + Username + "/profile")
         	.then(function(response){
         	    //The Embed for the Message
         		let embed = {
@@ -69,17 +69,17 @@ module.exports = function (Bot, AXIOS) {
         			},
         			timestamp: new Date(),
         			footer: {
-        				icon_url: Bot.user.avatarURL,
-        				text: Bot.user.username
+        				icon_url: bot.user.avatarURL,
+        				text: bot.user.username
         			}
         		};
                 
                 //Create the Message
-                Bot.createMessage(msg.channel.id, {embed: embed});
+                bot.createMessage(msg.channel.guild.id, {embed: embed});
                 
                 //Print the info that the command was used to the console
-                var Command = "Overwatch (to search for " + args + ")";
-                Console.CommandUsed(Bot, msg, Command);
+                var command = "Overwatch (to search for " + args + ")";
+                logger.commandUsed(bot, msg, command);
             });
         } catch (err) {
         console.log(err.message);
