@@ -16,10 +16,9 @@ module.exports = function (bot) {
         //Try the command
         try {
             //Get from Program-O
-        	var name = msg.author.discriminator;
-        	axios.get(`http://api.program-o.com/v2/chatbot/?bot_id=6&say=${args}&convo_id=${name}&format=json`)
+        	axios.get(`http://api.program-o.com/v2/chatbot/?bot_id=6&say=${args}&convo_id=discordbot_1&format=json`)
         	.then(function(response){
-        	    bot.createMessage(msg.channel.id, "<@" + msg.author.id + "> " + response.data.botsay.replace("Program-O", bot.user.username).replace("<br/>", ""));
+        	    bot.createMessage(msg.channel.id, "**" + msg.author.username + "#" + msg.author.discriminator + ":** " + response.data.botsay.replace("Program-O", bot.user.username));
         	})
         } catch (err) {
             console.log(err.message);
